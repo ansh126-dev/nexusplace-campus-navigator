@@ -1,0 +1,1155 @@
+import {
+  ActivityItem,
+  ApplicationRecord,
+  ApplicationStage,
+  AppNotification,
+  CompanyDrive,
+  HrQuestion,
+  InterviewArchive,
+  PrepTopic,
+  RoadmapMilestone,
+  RoleSkillTarget,
+  StudentDocument,
+  StudentProfile,
+} from '../types/placement';
+
+export const APPLICATION_STAGES: ApplicationStage[] = [
+  'Applied',
+  'Online Assessment',
+  'Technical Interview',
+  'HR & Managerial',
+  'Offer Received',
+];
+
+export const INITIAL_STUDENT_DOCUMENTS: StudentDocument[] = [
+  {
+    id: 'doc-resume',
+    title: 'Primary Placement Resume',
+    category: 'Resume',
+    fileName: 'Ananya_Sharma_CSE_2027.pdf',
+    fileSize: '248 KB',
+    uploadedAt: 'Nov 19, 2026',
+    status: 'Document Uploaded',
+  },
+  {
+    id: 'doc-transcript',
+    title: 'B.Tech Consolidated Transcript (Sem 1–6)',
+    category: 'Transcript',
+    fileName: 'Sem1_to_Sem6_Transcript_23BCE1048.pdf',
+    fileSize: '412 KB',
+    uploadedAt: 'Nov 12, 2026',
+    status: 'Document Uploaded',
+  },
+  {
+    id: 'doc-12th',
+    title: '12th Grade Board Marksheet',
+    category: 'Marksheet',
+    fileName: 'CBSE_Class12_Marksheet_2023.pdf',
+    fileSize: '318 KB',
+    uploadedAt: 'Oct 28, 2026',
+    status: 'Document Uploaded',
+  },
+  {
+    id: 'doc-10th',
+    title: '10th Grade Board Marksheet',
+    category: 'Marksheet',
+    fileName: 'CBSE_Class10_Marksheet_2021.pdf',
+    fileSize: '295 KB',
+    uploadedAt: 'Oct 28, 2026',
+    status: 'Document Uploaded',
+  },
+  {
+    id: 'doc-internship',
+    title: 'Summer Internship / Project Certificate',
+    category: 'Certificate',
+    fileName: 'Not uploaded yet',
+    fileSize: 'PDF / PNG up to 5 MB',
+    uploadedAt: 'Optional',
+    status: 'Pending Upload',
+  },
+];
+
+export const INITIAL_STUDENT_PROFILE: StudentProfile = {
+  name: 'Ananya Sharma',
+  rollNumber: '23BCE1048',
+  email: 'ananya.sharma@campus.edu',
+  phone: '+91 98450 21834',
+  branch: 'CSE',
+  batchYear: 2027,
+  cgpa: 8.64,
+  activeBacklogs: 0,
+  tenthPercent: 94.2,
+  twelfthPercent: 91.8,
+  skills: ['TypeScript', 'React', 'Node.js', 'Python', 'SQL', 'System Design', 'DSA'],
+  resumeFileName: 'Ananya_Sharma_CSE_2027.pdf',
+  resumeUpdatedAt: 'Nov 19, 2026',
+  linkedinUrl: 'linkedin.com/in/ananya-sharma-dev',
+  githubUrl: 'github.com/ananya-codes',
+  documents: INITIAL_STUDENT_DOCUMENTS,
+};
+
+export const COMPANY_DRIVES: CompanyDrive[] = [
+  {
+    id: 'google-swe',
+    companyName: 'Google',
+    tagline: 'Search, cloud infrastructure & AI platforms',
+    accentHex: '#2563EB',
+    roleTitle: 'Software Engineer (University Grad)',
+    roleCategory: 'Software Engineer',
+    driveType: 'Full-Time',
+    ctcDisplay: '₹34.0 LPA',
+    ctcNumericLpa: 34.0,
+    location: 'Bengaluru / Hyderabad',
+    deadline: '2026-11-25',
+    driveDate: '2026-12-01',
+    minCgpa: 7.5,
+    maxBacklogs: 0,
+    minTenthPercent: 75,
+    minTwelfthPercent: 75,
+    eligibleBranches: ['CSE', 'IT'],
+    requiredSkills: ['DSA', 'C++ / Java / TypeScript', 'System Design', 'Problem Solving'],
+    description:
+      'Build highly reliable distributed services across Google Cloud, Search, and Workspace. Ideal for graduates with strong algorithmic fundamentals and clean, scalable software engineering habits.',
+    rounds: [
+      'Google Online Coding Challenge (90 mins, 2–3 DSA problems)',
+      'Technical Interview I (Graphs, Trees & Complexity)',
+      'Technical Interview II (Coding & System Architecture)',
+      'Googleyness & Leadership Round',
+    ],
+    openingsCount: 8,
+  },
+  {
+    id: 'amazon-sde',
+    companyName: 'Amazon',
+    tagline: 'Global cloud (AWS) & e-commerce scale',
+    accentHex: '#D97706',
+    roleTitle: 'SDE-1 (New Grad)',
+    roleCategory: 'Software Engineer',
+    driveType: 'Full-Time',
+    ctcDisplay: '₹26.5 LPA',
+    ctcNumericLpa: 26.5,
+    location: 'Bengaluru / Chennai',
+    deadline: '2026-11-27',
+    driveDate: '2026-12-03',
+    minCgpa: 7.0,
+    maxBacklogs: 0,
+    minTenthPercent: 70,
+    minTwelfthPercent: 70,
+    eligibleBranches: ['CSE', 'IT', 'ECE'],
+    requiredSkills: ['DSA', 'Java / C++', 'System Design', 'OOP & REST APIs'],
+    description:
+      'Design resilient high-throughput microservices powering AWS and Prime retail logistics with strong emphasis on Leadership Principles and ownership.',
+    rounds: [
+      'Online Coding + Work Style Assessment',
+      'Technical Interview I (DSA & Problem Solving)',
+      'Technical Interview II (Low-Level Design & CS Core)',
+      'Bar Raiser & Leadership Principles Round',
+    ],
+    openingsCount: 16,
+  },
+  {
+    id: 'tcs-prime',
+    companyName: 'TCS',
+    tagline: 'Mass Recruiter · Tata Consultancy Services',
+    accentHex: '#0D5C63',
+    roleTitle: 'TCS Digital & Prime Systems Engineer',
+    roleCategory: 'Software Engineer',
+    driveType: 'Full-Time',
+    ctcDisplay: '₹7.0 LPA',
+    ctcNumericLpa: 7.0,
+    location: 'Pan-India',
+    deadline: '2026-11-26',
+    driveDate: '2026-12-02',
+    minCgpa: 6.0,
+    maxBacklogs: 0,
+    minTenthPercent: 60,
+    minTwelfthPercent: 60,
+    eligibleBranches: ['CSE', 'IT', 'ECE', 'EEE', 'MECH'],
+    requiredSkills: ['Java / Python', 'SQL', 'Aptitude', 'SDLC Fundamentals'],
+    description:
+      'Premier campus mass-recruitment program hiring across enterprise cloud modernization, digital engineering, and full-stack delivery units nationwide.',
+    rounds: [
+      'TCS NQT (Aptitude, Verbal & Hands-on Coding)',
+      'Technical Interview (Projects, SQL & OOPs)',
+      'Managerial & HR Fitment Round',
+    ],
+    openingsCount: 120,
+  },
+  {
+    id: 'goldman-analyst',
+    companyName: 'Goldman Sachs',
+    tagline: 'Global investment banking & engineering',
+    accentHex: '#1D4ED8',
+    roleTitle: 'Technology & Quant Analyst',
+    roleCategory: 'Product & Analyst',
+    driveType: 'Full-Time',
+    ctcDisplay: '₹24.0 LPA',
+    ctcNumericLpa: 24.0,
+    location: 'Hyderabad / Bengaluru',
+    deadline: '2026-11-29',
+    driveDate: '2026-12-06',
+    minCgpa: 8.0,
+    maxBacklogs: 0,
+    minTenthPercent: 80,
+    minTwelfthPercent: 80,
+    eligibleBranches: ['CSE', 'IT', 'ECE', 'EEE'],
+    requiredSkills: ['C++ / Java', 'Algorithms', 'Probability', 'SQL'],
+    description:
+      'Join the engineering division building low-latency risk analytics platforms, quantitative trade workflows, and resilient cloud-native financial tools.',
+    rounds: [
+      'Aptitude + Coding Assessment',
+      'Technical Interview I (DSA & Math)',
+      'Technical Interview II (Projects & OS/DBMS)',
+      'Vice President Behavioral Round',
+    ],
+    openingsCount: 12,
+  },
+  {
+    id: 'nvidia-systems',
+    companyName: 'NVIDIA',
+    tagline: 'Accelerated computing & AI hardware',
+    accentHex: '#15803D',
+    roleTitle: 'Systems & GPU Software Engineer',
+    roleCategory: 'Embedded / Core',
+    driveType: 'Full-Time',
+    ctcDisplay: '₹29.0 LPA',
+    ctcNumericLpa: 29.0,
+    location: 'Pune / Bengaluru',
+    deadline: '2026-12-02',
+    driveDate: '2026-12-09',
+    minCgpa: 8.2,
+    maxBacklogs: 0,
+    minTenthPercent: 80,
+    minTwelfthPercent: 80,
+    eligibleBranches: ['CSE', 'ECE', 'EEE'],
+    requiredSkills: ['C / C++', 'Operating Systems', 'Computer Architecture', 'Linux'],
+    description:
+      'Work on kernel drivers, CUDA runtime optimizations, and memory scheduling layers across next-generation accelerated compute architectures.',
+    rounds: [
+      'C/C++ & OS Fundamentals Test',
+      'Technical Interview I (Pointers & Memory)',
+      'Technical Interview II (Concurrency & Architecture)',
+      'Director Fitment Round',
+    ],
+    openingsCount: 6,
+  },
+  {
+    id: 'infosys-sp',
+    companyName: 'Infosys',
+    tagline: 'Mass Recruiter · Global IT consulting & AI',
+    accentHex: '#0284C7',
+    roleTitle: 'Specialist Programmer (Data & Cloud AI)',
+    roleCategory: 'Data & AI',
+    driveType: 'Full-Time',
+    ctcDisplay: '₹9.5 LPA',
+    ctcNumericLpa: 9.5,
+    location: 'Mysuru / Bengaluru / Pune',
+    deadline: '2026-12-04',
+    driveDate: '2026-12-11',
+    minCgpa: 6.5,
+    maxBacklogs: 0,
+    minTenthPercent: 60,
+    minTwelfthPercent: 60,
+    eligibleBranches: ['CSE', 'IT', 'ECE', 'EEE', 'MECH'],
+    requiredSkills: ['Python', 'SQL', 'Machine Learning', 'DSA'],
+    description:
+      'Flagship Infosys mass-campus Specialist Programmer & Systems Engineer track focusing on enterprise AI platforms, cloud pipelines, and data engineering.',
+    rounds: [
+      'InfyTQ / HackWithInfy Coding & Aptitude Round',
+      'Technical Interview (DSA, Python & DBMS)',
+      'HR & Location Preference Discussion',
+    ],
+    openingsCount: 95,
+  },
+  {
+    id: 'microsoft-swe',
+    companyName: 'Microsoft',
+    tagline: 'Cloud, productivity & AI platforms',
+    accentHex: '#0369A1',
+    roleTitle: 'Software Engineering Intern + PPO',
+    roleCategory: 'Software Engineer',
+    driveType: 'Intern + PPO',
+    ctcDisplay: '₹22.5 LPA',
+    ctcNumericLpa: 22.5,
+    location: 'Hyderabad / Noida',
+    deadline: '2026-12-05',
+    driveDate: '2026-12-12',
+    minCgpa: 7.5,
+    maxBacklogs: 0,
+    minTenthPercent: 75,
+    minTwelfthPercent: 75,
+    eligibleBranches: ['CSE', 'IT', 'ECE'],
+    requiredSkills: ['DSA', 'Python / C#', 'Cloud Basics', 'Problem Solving'],
+    description:
+      'Collaborate with Azure and Developer Division teams on 6-month production deliverables with fast-track Pre-Placement Offer conversion.',
+    rounds: [
+      'Codility Online Assessment',
+      'Technical Interview (DSA & Low-Level Design)',
+      'AA (As Appropriate) Engineering Lead Round',
+    ],
+    openingsCount: 14,
+  },
+  {
+    id: 'wipro-turbo',
+    companyName: 'Wipro',
+    tagline: 'Mass Recruiter · Enterprise engineering & core tech',
+    accentHex: '#6D28D9',
+    roleTitle: 'Project Engineer (Turbo Hiring)',
+    roleCategory: 'Embedded / Core',
+    driveType: 'Full-Time',
+    ctcDisplay: '₹6.5 LPA',
+    ctcNumericLpa: 6.5,
+    location: 'Bengaluru / Hyderabad / Chennai',
+    deadline: '2026-12-08',
+    driveDate: '2026-12-15',
+    minCgpa: 6.0,
+    maxBacklogs: 0,
+    minTenthPercent: 60,
+    minTwelfthPercent: 60,
+    eligibleBranches: ['CSE', 'IT', 'ECE', 'EEE', 'MECH'],
+    requiredSkills: ['C / C++', 'Java', 'Operating Systems', 'Aptitude'],
+    description:
+      'Wipro Elite & Turbo campus recruitment drive across embedded IoT engineering, cloud infrastructure operations, and enterprise application delivery.',
+    rounds: [
+      'NLTH Online Assessment (Aptitude, Essay & 2 Coding)',
+      'Technical & Project Evaluation Round',
+      'HR Interview',
+    ],
+    openingsCount: 85,
+  },
+  {
+    id: 'accenture-ase',
+    companyName: 'Accenture',
+    tagline: 'Mass Recruiter · Global consulting & digital tech',
+    accentHex: '#7C3AED',
+    roleTitle: 'Associate Software & Business Analyst',
+    roleCategory: 'Product & Analyst',
+    driveType: 'Full-Time',
+    ctcDisplay: '₹6.5 LPA',
+    ctcNumericLpa: 6.5,
+    location: 'Mumbai / Gurugram / Bengaluru',
+    deadline: '2026-12-12',
+    driveDate: '2026-12-19',
+    minCgpa: 6.5,
+    maxBacklogs: 1,
+    minTenthPercent: 60,
+    minTwelfthPercent: 60,
+    eligibleBranches: ['CSE', 'IT', 'ECE', 'EEE', 'MECH'],
+    requiredSkills: ['SQL', 'Python', 'Product Metrics', 'Communication'],
+    description:
+      'High-volume campus hiring program training graduates across SAP cloud transformation, analytics consulting, and full-stack enterprise modernization.',
+    rounds: [
+      'Cognitive, Technical & Coding Assessment',
+      'Communication & Situational Judgment Test',
+      'Final Technical + HR Interview',
+    ],
+    openingsCount: 110,
+  },
+  {
+    id: 'cognizant-genc',
+    companyName: 'Cognizant',
+    tagline: 'Mass Recruiter · GenC Next digital engineering',
+    accentHex: '#0F766E',
+    roleTitle: 'GenC Next Full-Stack Developer',
+    roleCategory: 'Software Engineer',
+    driveType: 'Full-Time',
+    ctcDisplay: '₹6.75 LPA',
+    ctcNumericLpa: 6.75,
+    location: 'Chennai / Pune / Kolkata',
+    deadline: '2026-12-16',
+    driveDate: '2026-12-22',
+    minCgpa: 6.0,
+    maxBacklogs: 0,
+    minTenthPercent: 60,
+    minTwelfthPercent: 60,
+    eligibleBranches: ['CSE', 'IT', 'ECE', 'EEE'],
+    requiredSkills: ['Java / TypeScript', 'React', 'SQL', 'REST APIs'],
+    description:
+      'Cognizant GenC Next campus program onboarding engineering graduates into modern cloud-native web, Java microservices, and digital banking teams.',
+    rounds: [
+      'Skill-Based Coding & SQL Assessment',
+      'Technical Interview (Full-Stack & DBMS)',
+      'HR Onboarding Discussion',
+    ],
+    openingsCount: 90,
+  },
+];
+
+export const INITIAL_APPLICATIONS: ApplicationRecord[] = [
+  {
+    id: 'app-1',
+    companyId: 'amazon-sde',
+    stage: 'Technical Interview',
+    appliedAt: 'Nov 14, 2026',
+    updatedAt: 'Nov 21, 2026',
+    nextMilestone: 'Round 1 Technical on Nov 28, 3:00 PM',
+    notes: 'Cleared Amazon OA (2/2 coding + Work Style). Reviewing trees, graphs, and Leadership Principles.',
+  },
+  {
+    id: 'app-2',
+    companyId: 'microsoft-swe',
+    stage: 'Online Assessment',
+    appliedAt: 'Nov 16, 2026',
+    updatedAt: 'Nov 20, 2026',
+    nextMilestone: 'Codility OA window closes Nov 26',
+    notes: 'Focus on sliding window, binary trees, and graph traversal edge cases.',
+  },
+  {
+    id: 'app-3',
+    companyId: 'infosys-sp',
+    stage: 'HR & Managerial',
+    appliedAt: 'Nov 10, 2026',
+    updatedAt: 'Nov 22, 2026',
+    nextMilestone: 'Final HR discussion on Nov 26',
+    notes: 'Cleared HackWithInfy coding & technical round cleanly.',
+  },
+  {
+    id: 'app-4',
+    companyId: 'tcs-prime',
+    stage: 'Applied',
+    appliedAt: 'Nov 21, 2026',
+    updatedAt: 'Nov 21, 2026',
+    nextMilestone: 'NQT shortlist announcement on Nov 28',
+    notes: 'Registered for TCS Digital & Prime campus batch.',
+  },
+];
+
+export const INITIAL_PREP_TOPICS: PrepTopic[] = [
+  {
+    id: 'prep-1',
+    category: 'DSA & Algorithms',
+    title: 'Dynamic Programming on Grids & Subsequences (15 problems)',
+    estimatedHours: 6,
+    priority: 'High',
+    completed: true,
+  },
+  {
+    id: 'prep-2',
+    category: 'DSA & Algorithms',
+    title: 'Graphs: BFS, Dijkstra, Topological Sort & Union-Find',
+    estimatedHours: 5,
+    priority: 'High',
+    completed: true,
+  },
+  {
+    id: 'prep-3',
+    category: 'DSA & Algorithms',
+    title: 'Trees, Tries & Sliding Window Patterns',
+    estimatedHours: 4,
+    priority: 'High',
+    completed: false,
+  },
+  {
+    id: 'prep-4',
+    category: 'System Design',
+    title: 'Rate Limiter, URL Shortener & Idempotent Payment APIs',
+    estimatedHours: 4,
+    priority: 'High',
+    completed: true,
+  },
+  {
+    id: 'prep-5',
+    category: 'System Design',
+    title: 'Caching Strategies, Sharding & Message Queues (Kafka)',
+    estimatedHours: 5,
+    priority: 'Medium',
+    completed: false,
+  },
+  {
+    id: 'prep-6',
+    category: 'Core CS (OS/DBMS/CN)',
+    title: 'DBMS Indexing, B+ Trees, ACID & Isolation Levels',
+    estimatedHours: 3,
+    priority: 'High',
+    completed: true,
+  },
+  {
+    id: 'prep-7',
+    category: 'Core CS (OS/DBMS/CN)',
+    title: 'OS Processes, Threads, Deadlocks & Virtual Memory',
+    estimatedHours: 3,
+    priority: 'Medium',
+    completed: false,
+  },
+  {
+    id: 'prep-8',
+    category: 'Aptitude & SQL',
+    title: 'Complex SQL Window Functions, Joins & Aggregations',
+    estimatedHours: 3,
+    priority: 'High',
+    completed: true,
+  },
+];
+
+export const INTERVIEW_ARCHIVES: InterviewArchive[] = [
+  {
+    id: 'arch-google',
+    companyName: 'Google',
+    role: 'Software Engineer',
+    difficulty: 'High',
+    oaFormat: '90 mins · 2–3 Medium-Hard DSA problems (Graphs, DP, Trees)',
+    keyTopics: ['Data Structures', 'Graph Algorithms', 'Clean Code Craft', 'Googleyness'],
+    sampleQuestions: [
+      'Design an efficient autocomplete trie with frequency-weighted top-K suggestions.',
+      'Find shortest path in a weighted grid with at most K obstacle removals.',
+      'Tell us about a time you navigated an ambiguous technical constraint.',
+    ],
+    tip: 'Google values clear edge-case thinking, dry-running your code aloud, and optimal time/space complexity.',
+  },
+  {
+    id: 'arch-amazon',
+    companyName: 'Amazon',
+    role: 'SDE-1',
+    difficulty: 'Challenging',
+    oaFormat: '90 mins · 2 DSA problems + Work Style Leadership Assessment',
+    keyTopics: ['Trees & Graphs', 'Low-Level Design', 'Leadership Principles', 'Scalability'],
+    sampleQuestions: [
+      'Design a scalable parcel locker assignment & lookup service.',
+      'Implement LRU Cache with O(1) get and put operations.',
+      'Describe a time you took ownership beyond your core responsibility (Ownership LP).',
+    ],
+    tip: 'Prepare 2 concise STAR stories mapped to Ownership, Customer Obsession, and Bias for Action.',
+  },
+  {
+    id: 'arch-tcs',
+    companyName: 'TCS',
+    role: 'Digital & Prime Engineer',
+    difficulty: 'Moderate',
+    oaFormat: '110 mins · Quantitative Aptitude, Verbal, Reasoning + 2 Coding questions',
+    keyTopics: ['Aptitude & Speed', 'OOPs in Java/Python', 'SQL Joins', 'Project Deep-Dive'],
+    sampleQuestions: [
+      'Explain polymorphism, abstraction, and method overriding with real code examples.',
+      'Write a SQL query to find the second highest salary per department.',
+      'Walk us through your capstone project database schema and challenges faced.',
+    ],
+    tip: 'Accuracy and speed in TCS NQT quantitative aptitude plus thorough knowledge of your resume projects are key.',
+  },
+  {
+    id: 'arch-infosys',
+    companyName: 'Infosys',
+    role: 'Specialist Programmer',
+    difficulty: 'Moderate',
+    oaFormat: '90 mins · 3 Coding challenges (Easy, Medium, Hard) via HackWithInfy',
+    keyTopics: ['Dynamic Programming', 'Greedy & Arrays', 'DBMS Normalization', 'Python / Java'],
+    sampleQuestions: [
+      'Given an array of meeting intervals, find the minimum conference rooms required.',
+      'Explain ACID properties, indexing, and normalization up to BCNF.',
+      'How would you deploy a Python REST service into a containerized cloud environment?',
+    ],
+    tip: 'Solving 2 out of 3 HackWithInfy coding problems cleanly puts you in the Specialist Programmer tier.',
+  },
+];
+
+export const INITIAL_HR_QUESTIONS: HrQuestion[] = [
+  {
+    id: 'hr-1',
+    prompt: 'Walk me through your most impactful engineering project and a difficult tradeoff you made.',
+    focusArea: 'Technical Ownership',
+    starFrameworkHint:
+      'Situation: Capstone latency issue · Task: Reduce API p95 under 150ms · Action: Added Redis cache + indexed composite keys · Result: Cut latency by 62% across 12k simulated requests.',
+    practiced: true,
+  },
+  {
+    id: 'hr-2',
+    prompt: 'Tell me about a time a project deadline slipped or a teammate disagreed with your approach.',
+    focusArea: 'Collaboration & Conflict',
+    starFrameworkHint:
+      'Focus on objective data over ego—show how you benchmarked both options, aligned on sprint priorities, and delivered on time.',
+    practiced: false,
+  },
+  {
+    id: 'hr-3',
+    prompt: 'Why this company and why this specific engineering role right out of university?',
+    focusArea: 'Role Motivation',
+    starFrameworkHint:
+      'Connect a concrete product/engineering challenge of the company to skills you have already demonstrated in projects or internships.',
+    practiced: false,
+  },
+  {
+    id: 'hr-4',
+    prompt: 'Describe a bug you found in production or testing that taught you a lasting engineering habit.',
+    focusArea: 'Growth Mindset',
+    starFrameworkHint:
+      'Explain the root cause concisely, the fix you shipped, and the automated check or test you added so it could never recur.',
+    practiced: true,
+  },
+];
+
+export const INITIAL_ACTIVITIES: ActivityItem[] = [
+  {
+    id: 'act-1',
+    action: 'Stage Advanced',
+    detail: 'Infosys Specialist Programmer moved to HR & Managerial round',
+    timestamp: '2 hours ago',
+    type: 'application',
+  },
+  {
+    id: 'act-2',
+    action: 'Topic Completed',
+    detail: 'Finished SQL Window Functions & Joins prep set',
+    timestamp: 'Yesterday',
+    type: 'prep',
+  },
+  {
+    id: 'act-3',
+    action: 'Application Submitted',
+    detail: 'Applied to TCS — Digital & Prime Systems Engineer',
+    timestamp: '2 days ago',
+    type: 'application',
+  },
+  {
+    id: 'act-4',
+    action: 'Resume Verified',
+    detail: 'Ananya_Sharma_CSE_2027.pdf synced with placement cell',
+    timestamp: '4 days ago',
+    type: 'profile',
+  },
+];
+
+export const INITIAL_NOTIFICATIONS: AppNotification[] = [
+  {
+    id: 'notif-1',
+    title: 'Google deadline in 2 days',
+    description: 'Registration for Software Engineer (₹34.0 LPA) closes Nov 25 at 11:59 PM.',
+    timeLabel: '1h ago',
+    unread: true,
+    targetTab: 'deadlines',
+  },
+  {
+    id: 'notif-2',
+    title: 'Infosys Final HR Round Scheduled',
+    description: 'Specialist Programmer HR conversation set for Nov 26. Review your STAR notes.',
+    timeLabel: '3h ago',
+    unread: true,
+    targetTab: 'tracker',
+  },
+  {
+    id: 'notif-3',
+    title: 'Mass Drive Open: Accenture & Cognizant',
+    description: 'Eligible across CSE, IT, ECE, EEE & MECH based on your 8.64 CGPA.',
+    timeLabel: '1d ago',
+    unread: false,
+    targetTab: 'opportunities',
+  },
+];
+
+export const WEEKLY_PREP_SERIES = [
+  { day: 'Mon', hours: 2.5, applications: 1 },
+  { day: 'Tue', hours: 3.2, applications: 0 },
+  { day: 'Wed', hours: 2.8, applications: 1 },
+  { day: 'Thu', hours: 4.1, applications: 1 },
+  { day: 'Fri', hours: 3.6, applications: 0 },
+  { day: 'Sat', hours: 5.0, applications: 1 },
+  { day: 'Sun', hours: 4.4, applications: 0 },
+];
+
+export const ALL_ANALYZER_SKILLS: string[] = [
+  'DSA',
+  'TypeScript',
+  'Java',
+  'Python',
+  'React',
+  'Node.js',
+  'SQL',
+  'System Design',
+  'REST APIs',
+  'Docker',
+  'Redis',
+  'Git & Testing',
+  'Machine Learning',
+  'Statistics & Probability',
+  'PyTorch',
+  'Data Warehousing',
+  'C / C++',
+  'Operating Systems',
+  'Computer Architecture',
+  'Product Metrics',
+  'Excel & BI Dashboards',
+  'A/B Testing',
+];
+
+export const TARGET_ROLE_SKILLS: RoleSkillTarget[] = [
+  {
+    id: 'role-swe',
+    roleTitle: 'Software Engineer (Full-Stack / SDE)',
+    category: 'Software Engineer',
+    summary:
+      'High-bar product engineering roles focusing on clean modular code, DSA speed, and scalable web/API architecture.',
+    coreSkills: ['DSA', 'TypeScript', 'React', 'Node.js', 'REST APIs', 'System Design'],
+    bonusSkills: ['SQL', 'Docker', 'Git & Testing'],
+    resourcesBySkill: {
+      DSA: [
+        {
+          title: 'Blind 75 & Striver A2Z Pattern Sheet',
+          provider: 'Campus Prep Sheet',
+          duration: '12 hrs',
+          focus: 'Trees, Graphs, DP & Sliding Window',
+        },
+      ],
+      TypeScript: [
+        {
+          title: 'TypeScript Strict Modeling & Async Patterns',
+          provider: 'Official Handbook Lab',
+          duration: '4 hrs',
+          focus: 'Generics, narrowing, API contracts',
+        },
+      ],
+      React: [
+        {
+          title: 'State Management & Rendering Performance',
+          provider: 'Frontend Architecture Sprint',
+          duration: '5 hrs',
+          focus: 'Hooks, memoization, error boundaries',
+        },
+      ],
+      'Node.js': [
+        {
+          title: 'Event Loop, Streams & Express Middleware',
+          provider: 'Backend Core Track',
+          duration: '4 hrs',
+          focus: 'Concurrency, auth, rate limiting',
+        },
+      ],
+      'REST APIs': [
+        {
+          title: 'Idempotent API Design & OpenAPI Contracts',
+          provider: 'API Craft Guide',
+          duration: '3 hrs',
+          focus: 'Pagination, status codes, retries',
+        },
+      ],
+      'System Design': [
+        {
+          title: 'Campus HLD Primer: Caching, Load Balancing & Queues',
+          provider: 'NexusPlace Architecture Pack',
+          duration: '6 hrs',
+          focus: 'URL shortener, rate limiter, feeds',
+        },
+      ],
+      SQL: [
+        {
+          title: 'Window Functions & Composite Indexing Drills',
+          provider: 'SQL Interview Arena',
+          duration: '3 hrs',
+          focus: 'Joins, query plans, normalization',
+        },
+      ],
+      Docker: [
+        {
+          title: 'Containerizing Full-Stack Apps with Multi-Stage Builds',
+          provider: 'DevOps Mini-Lab',
+          duration: '2.5 hrs',
+          focus: 'Dockerfiles, compose, env hygiene',
+        },
+      ],
+      'Git & Testing': [
+        {
+          title: 'Unit Testing & Clean PR Workflows',
+          provider: 'Engineering Craft Lab',
+          duration: '2 hrs',
+          focus: 'Vitest/Jest mocking & test pyramids',
+        },
+      ],
+    },
+  },
+  {
+    id: 'role-backend',
+    roleTitle: 'Backend & Distributed Systems Engineer',
+    category: 'Software Engineer',
+    summary:
+      'FinTech and cloud infrastructure roles emphasizing high-throughput APIs, database locks, caching, and fault tolerance.',
+    coreSkills: ['DSA', 'Java', 'SQL', 'System Design', 'REST APIs', 'Redis'],
+    bonusSkills: ['Docker', 'Operating Systems', 'Node.js'],
+    resourcesBySkill: {
+      Java: [
+        {
+          title: 'Collections, Concurrency & JVM Internals',
+          provider: 'Backend Mastery Track',
+          duration: '6 hrs',
+          focus: 'ExecutorService, ConcurrentHashMap, GC',
+        },
+      ],
+      Redis: [
+        {
+          title: 'Distributed Caching, TTL Eviction & Rate Limiting',
+          provider: 'Systems Lab',
+          duration: '3 hrs',
+          focus: 'Write-through vs look-aside, locks',
+        },
+      ],
+      'Operating Systems': [
+        {
+          title: 'Threads, Mutexes, Deadlocks & Virtual Memory',
+          provider: 'CS Core Revision',
+          duration: '4 hrs',
+          focus: 'Scheduling, paging, synchronization',
+        },
+      ],
+      DSA: [
+        {
+          title: 'Graphs, Heaps & Concurrency-Safe Structures',
+          provider: 'DSA Core Sprint',
+          duration: '10 hrs',
+          focus: 'LRU Cache, Trie, Dijkstra',
+        },
+      ],
+      SQL: [
+        {
+          title: 'ACID Isolation Levels & Deadlock Prevention',
+          provider: 'DBMS Deep Dive',
+          duration: '3.5 hrs',
+          focus: 'Transactions, B+ Trees, locks',
+        },
+      ],
+      'System Design': [
+        {
+          title: 'Payment Ledger & Webhook Retry Architecture',
+          provider: 'FinTech Design Notes',
+          duration: '5 hrs',
+          focus: 'Idempotency keys, queues, sharding',
+        },
+      ],
+      'REST APIs': [
+        {
+          title: 'Production API Security & Observability',
+          provider: 'API Design Workshop',
+          duration: '3 hrs',
+          focus: 'JWT, validation, structured logging',
+        },
+      ],
+      Docker: [
+        {
+          title: 'Service Containers & Health Checks',
+          provider: 'Cloud Basics Lab',
+          duration: '2.5 hrs',
+          focus: 'Networking & container orchestration',
+        },
+      ],
+      'Node.js': [
+        {
+          title: 'Async I/O & Worker Queues',
+          provider: 'Runtime Workshop',
+          duration: '3 hrs',
+          focus: 'BullMQ, backpressure',
+        },
+      ],
+    },
+  },
+  {
+    id: 'role-data-ai',
+    roleTitle: 'Data Scientist & Applied ML Engineer',
+    category: 'Data & AI',
+    summary:
+      'Applied ML and ranking roles combining Python modeling, SQL pipelines, probability, and deployment fundamentals.',
+    coreSkills: ['Python', 'SQL', 'Machine Learning', 'Statistics & Probability', 'PyTorch', 'DSA'],
+    bonusSkills: ['Data Warehousing', 'Docker', 'REST APIs'],
+    resourcesBySkill: {
+      Python: [
+        {
+          title: 'Vectorized NumPy, Pandas & Clean Pythonic Code',
+          provider: 'ML Engineering Kit',
+          duration: '4 hrs',
+          focus: 'Dataframes, generators, profiling',
+        },
+      ],
+      'Machine Learning': [
+        {
+          title: 'Tree Ensembles, Regularization & Ranking Metrics',
+          provider: 'Applied ML Track',
+          duration: '7 hrs',
+          focus: 'XGBoost, precision-recall, feature stores',
+        },
+      ],
+      'Statistics & Probability': [
+        {
+          title: 'Hypothesis Testing, Bayes & Expected Value Puzzles',
+          provider: 'Quant & ML Prep',
+          duration: '5 hrs',
+          focus: 'Distributions, p-values, A/B power',
+        },
+      ],
+      PyTorch: [
+        {
+          title: 'Neural Nets, Autograd & Fine-Tuning Workflows',
+          provider: 'Deep Learning Lab',
+          duration: '6 hrs',
+          focus: 'DataLoaders, loss curves, inference',
+        },
+      ],
+      'Data Warehousing': [
+        {
+          title: 'Dimensional Modeling & ETL Pipelines',
+          provider: 'Data Eng Primer',
+          duration: '3.5 hrs',
+          focus: 'Star schema, partitioning, Spark basics',
+        },
+      ],
+      SQL: [
+        {
+          title: 'Cohort Retention & Funnel Queries in SQL',
+          provider: 'Analytics SQL Lab',
+          duration: '3 hrs',
+          focus: 'CTEs, window functions, rollups',
+        },
+      ],
+      DSA: [
+        {
+          title: 'Arrays, HashMaps & Matrix Problems in Python',
+          provider: 'ML Coding Prep',
+          duration: '6 hrs',
+          focus: 'OA coding fluency',
+        },
+      ],
+      Docker: [
+        {
+          title: 'Packaging ML Inference Endpoints',
+          provider: 'MLOps Starter',
+          duration: '2.5 hrs',
+          focus: 'FastAPI + Docker serving',
+        },
+      ],
+      'REST APIs': [
+        {
+          title: 'Serving Low-Latency Model Predictions',
+          provider: 'FastAPI Workshop',
+          duration: '2 hrs',
+          focus: 'Batching & input schemas',
+        },
+      ],
+    },
+  },
+  {
+    id: 'role-product-analyst',
+    roleTitle: 'Product & Business Data Analyst',
+    category: 'Product & Analyst',
+    summary:
+      'Product-led analytics roles centered on SQL fluency, funnel diagnostics, experimentation, and executive storytelling.',
+    coreSkills: ['SQL', 'Python', 'Product Metrics', 'A/B Testing', 'Excel & BI Dashboards'],
+    bonusSkills: ['Statistics & Probability', 'REST APIs'],
+    resourcesBySkill: {
+      'Product Metrics': [
+        {
+          title: 'North Star Metrics, Retention Curves & RCA Cases',
+          provider: 'Product Analytics Playbook',
+          duration: '4 hrs',
+          focus: 'DAU/MAU, churn, root-cause trees',
+        },
+      ],
+      'A/B Testing': [
+        {
+          title: 'Experiment Design, Sample Sizing & Novelty Effects',
+          provider: 'Experimentation Lab',
+          duration: '3.5 hrs',
+          focus: 'Confidence intervals, guardrail metrics',
+        },
+      ],
+      'Excel & BI Dashboards': [
+        {
+          title: 'Cohort Pivot Tables & Executive KPI Decks',
+          provider: 'BI Modeling Studio',
+          duration: '3 hrs',
+          focus: 'Lookups, sensitivity tables, storytelling',
+        },
+      ],
+      SQL: [
+        {
+          title: '40 Real Product Analytics SQL Queries',
+          provider: 'SQL Casebook',
+          duration: '4 hrs',
+          focus: 'Sessionization, attribution, funnels',
+        },
+      ],
+      Python: [
+        {
+          title: 'Exploratory Data Analysis with Pandas & Matplotlib',
+          provider: 'Analyst Python Kit',
+          duration: '3.5 hrs',
+          focus: 'Cleaning, segmentation, visualizations',
+        },
+      ],
+      'Statistics & Probability': [
+        {
+          title: 'Applied Probability & Regression Basics',
+          provider: 'Quant Prep',
+          duration: '3 hrs',
+          focus: 'Variance, correlation vs causation',
+        },
+      ],
+      'REST APIs': [
+        {
+          title: 'Event Telemetry & JSON Schema Basics',
+          provider: 'Tracking Primer',
+          duration: '1.5 hrs',
+          focus: 'Event instrumentation',
+        },
+      ],
+    },
+  },
+  {
+    id: 'role-embedded',
+    roleTitle: 'Embedded & Systems Software Engineer',
+    category: 'Embedded / Core',
+    summary:
+      'Low-level hardware-software roles focused on C/C++, memory safety, OS scheduling, and computer architecture.',
+    coreSkills: ['C / C++', 'Operating Systems', 'Computer Architecture', 'DSA'],
+    bonusSkills: ['Python', 'Git & Testing'],
+    resourcesBySkill: {
+      'C / C++': [
+        {
+          title: 'Pointers, Bit Manipulation & Memory Management',
+          provider: 'Systems C/C++ Track',
+          duration: '6 hrs',
+          focus: 'Structs, volatile, smart pointers',
+        },
+      ],
+      'Operating Systems': [
+        {
+          title: 'Interrupts, RTOS Scheduling & Synchronization',
+          provider: 'OS Kernel Notes',
+          duration: '5 hrs',
+          focus: 'Semaphores, priority inversion, DMA',
+        },
+      ],
+      'Computer Architecture': [
+        {
+          title: 'Pipelining, Cache Coherence & Memory Hierarchy',
+          provider: 'Hardware-SW Primer',
+          duration: '4.5 hrs',
+          focus: 'L1/L2 cache, hazards, ISA',
+        },
+      ],
+      DSA: [
+        {
+          title: 'Low-Overhead Data Structures & Bitmasking',
+          provider: 'Core Coding Prep',
+          duration: '6 hrs',
+          focus: 'Ring buffers, linked lists, graphs',
+        },
+      ],
+      Python: [
+        {
+          title: 'Test Automation & Firmware Scripting',
+          provider: 'Embedded QA Lab',
+          duration: '2 hrs',
+          focus: 'Serial parsing & CI scripts',
+        },
+      ],
+      'Git & Testing': [
+        {
+          title: 'Hardware-in-the-Loop & Regression Hygiene',
+          provider: 'Firmware Workflow',
+          duration: '2 hrs',
+          focus: 'Bisect, static analysis',
+        },
+      ],
+    },
+  },
+];
+
+export const INITIAL_ROADMAP_MILESTONES: RoadmapMilestone[] = [
+  {
+    id: 'rm-resume',
+    stepNumber: 1,
+    title: 'Resume Preparation',
+    phaseWindow: 'Week 1 · Foundation',
+    summary:
+      'Refine a crisp 1-page ATS-friendly resume with quantified project impact and upload verified academic records.',
+    deliverables: [
+      'Quantify 3 project bullets with latency, scale, or accuracy gains',
+      'Sync primary PDF resume & consolidated transcript in Profile',
+      'Verify GitHub & LinkedIn links open cleanly',
+    ],
+    targetTab: 'profile',
+    ctaLabel: 'Open Profile & Docs',
+  },
+  {
+    id: 'rm-aptitude',
+    stepNumber: 2,
+    title: 'Aptitude',
+    phaseWindow: 'Week 2 · Screening Speed',
+    summary:
+      'Build speed on quantitative probability, logical puzzles, and complex SQL joins used in initial company OAs.',
+    deliverables: [
+      'Practice 2 timed quant & probability sets (30 mins each)',
+      'Master SQL window functions, CTEs, and group-by edge cases',
+      'Complete Aptitude & SQL checklist modules',
+    ],
+    targetTab: 'preparation',
+    ctaLabel: 'Practice Prep Hub',
+  },
+  {
+    id: 'rm-coding',
+    stepNumber: 3,
+    title: 'Coding',
+    phaseWindow: 'Week 3–4 · Core Technical',
+    summary:
+      'Lock down core DSA patterns (Trees, Graphs, DP, Sliding Window) and close high-priority role skill gaps.',
+    deliverables: [
+      'Solve 25 medium problems across Trees, Graphs, and DP',
+      'Run Skill Gap Analyzer against your target SDE/Data role',
+      'Practice clean, edge-case-safe code without IDE hints',
+    ],
+    targetTab: 'skill-gap',
+    ctaLabel: 'Analyze Skill Gaps',
+  },
+  {
+    id: 'rm-communication',
+    stepNumber: 4,
+    title: 'Communication Skills',
+    phaseWindow: 'Week 5 · Articulation',
+    summary:
+      'Sharpen how you think aloud during live coding, explain architecture tradeoffs, and deliver structured STAR stories.',
+    deliverables: [
+      'Record 2 spoken mock interview answers and review clarity',
+      'Time project walkthroughs to a crisp 90-second summary',
+      'Prepare concise answers for "Why this company?"',
+    ],
+    targetTab: 'preparation',
+    ctaLabel: 'Try Mock Interview',
+  },
+  {
+    id: 'rm-applications',
+    stepNumber: 5,
+    title: 'Applications',
+    phaseWindow: 'Week 6 · Drive Execution',
+    summary:
+      'Audit eligibility across active drives, compare top offers side-by-side, and submit before registration cutoffs.',
+    deliverables: [
+      'Verify CGPA & branch eligibility for priority companies',
+      'Compare target drives for role fit, rounds, and package',
+      'Clear urgent deadlines in Smart Deadline Reminders',
+    ],
+    targetTab: 'deadlines',
+    ctaLabel: 'Check Deadlines',
+  },
+  {
+    id: 'rm-technical',
+    stepNumber: 6,
+    title: 'Technical Interviews',
+    phaseWindow: 'Week 7 · Deep Rounds',
+    summary:
+      'Prepare for live DSA coding, DBMS/OS core deep-dives, and HLD/LLD system design discussions using company archives.',
+    deliverables: [
+      'Review company-specific OA & interview archives',
+      'Complete at least 3 Gemini Technical Mock Interview rounds',
+      'Update Application Tracker notes with round milestones',
+    ],
+    targetTab: 'tracker',
+    ctaLabel: 'Open Tracker',
+  },
+  {
+    id: 'rm-hr',
+    stepNumber: 7,
+    title: 'HR Interviews',
+    phaseWindow: 'Week 8 · Final Conversion',
+    summary:
+      'Deliver authentic values alignment, ownership stories, relocation readiness, and thoughtful questions for hiring managers.',
+    deliverables: [
+      'Mark all 4 core STAR behavioral prompts as practiced',
+      'Prepare 3 thoughtful questions for engineering leaders',
+      'Review offer terms and joining timeline',
+    ],
+    targetTab: 'preparation',
+    ctaLabel: 'Review HR Prep',
+  },
+];
